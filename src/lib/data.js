@@ -47,19 +47,10 @@ export const getUserByUsername = async (username) => {
 }
 
 export const getUser = async (id) => {
-  //  if (id !== 24) {
-  //     console.log('no valid id')
-  //     return null
-  //   }
   try {
     connectToDb()
     const user = await User.findById(id)
-
-    if (user) {
-      return user
-    } else {
-      return null
-    }
+    return user || null
   } catch (err) {
     console.log(err)
     throw new Error('Failed to fetch user!')

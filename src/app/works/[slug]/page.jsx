@@ -10,16 +10,6 @@ import Image from 'next/image'
 import { getWorks } from '@/lib/data'
 import Link from 'next/link'
 
-// const getData = async (slug) => {
-//   const res = await fetch(`${process.env.BASE_URL}/api/works/${slug}`)
-
-//   if (!res.ok) {
-//     throw new Error('Something went wrong in works [slug] page')
-//   }
-
-//   return res.json()
-// }
-
 const SingleWork = async ({ params }) => {
   const { slug } = params
   const work = await getWork(slug)

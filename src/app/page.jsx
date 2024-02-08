@@ -38,7 +38,7 @@ const Home = async () => {
       </div>
       <div className="  md:block hidden rounded-2xl relative overflow-hidden ">
         <Image
-          src="/robot.jpg "
+          src="/robot.jpg"
           fill
           alt="Robot"
           className="object-cover w-auto h-auto"
@@ -46,7 +46,7 @@ const Home = async () => {
       </div>
       <div className=" md:block hidden    rounded-2xl relative overflow-hidden ">
         <Image
-          src="/code-editor.png  "
+          src="/code-editor.png"
           fill
           alt="Code Editor"
           className="object-cover"
@@ -55,21 +55,21 @@ const Home = async () => {
 
       <div className=" min-h-[300px]  bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
         <h1 className="text-xl  md:text-2xl">Ekspercka Kadra Nauczycielska:</h1>{' '}
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground text-xs md:text-base">
           Nasi doświadczeni nauczyciele nie tylko posiadają ogromną wiedzę, ale
           również pasję do dzielenia się nią z uczniami.
         </p>
       </div>
       <div className=" min-h-[300px]  bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
         <h1 className="text-xl  md:text-2xl">Projekty Praktyczne:</h1>{' '}
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground text-xs md:text-base">
           Nie uczymy tylko teorii. Każdy moduł obejmuje praktyczne projekty,
           które pozwalają Ci zastosować zdobytą wiedzę w realnych sytuacjach.
         </p>
       </div>
       <div className=" min-h-[300px]   bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
         <h1 className="text-xl  md:text-2xl">Wsparcie Społeczności:</h1>{' '}
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground text-xs md:text-base">
           Dołączając do nas, dołączasz do społeczności pasjonatów programowania.
           Razem uczymy się, dzielimy pomysły i inspirujemy się nawzajem.
         </p>
