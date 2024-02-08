@@ -45,7 +45,7 @@ const AdminPageLayout = ({ children }) => {
       setFullName(session.user.fullName)
       setImg(session.user.img)
     }
-  }, [session, status])
+  }, [router, session, status])
 
   const settings = {
     dots: true,
@@ -79,6 +79,7 @@ const AdminPageLayout = ({ children }) => {
             <p className="font-bold">Admin Panel</p>
             <div className=" relative">
               <Image
+                alt="avatar"
                 src={img ? img : '/noavatar.png'}
                 width={100}
                 height={100}

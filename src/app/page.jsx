@@ -124,10 +124,10 @@ const Home = async () => {
       <div className=" min-h-[250px]  bg-slate-900  hidden md:block col-span-2 rounded-2xl p-4">
         <div className="flex flex-col justify-evenly h-full">
           <p>
-            "Największym atutem szkoły jest nie tylko ekspercka kadra
+            &quot;Największym atutem szkoły jest nie tylko ekspercka kadra
             nauczycielska, ale również wsparcie społeczności. Każdy tutaj jest
             gotów pomóc, podzielić się swoimi doświadczeniami i wspierać w
-            trudniejszych chwilach."
+            trudniejszych chwilach.&quot;
           </p>
           <div className="relative flex">
             <Image
@@ -159,10 +159,10 @@ const Home = async () => {
       <div className=" min-h-[250px]   bg-slate-900 visible md:hidden col-span-4 rounded-2xl p-4">
         <div className="flex flex-col justify-evenly h-full">
           <p>
-            "Największym atutem szkoły jest nie tylko ekspercka kadra
+            &quot;Największym atutem szkoły jest nie tylko ekspercka kadra
             nauczycielska, ale również wsparcie społeczności. Każdy tutaj jest
             gotów pomóc, podzielić się swoimi doświadczeniami i wspierać w
-            trudniejszych chwilach."
+            trudniejszych chwilach.&quot;
           </p>
           <div className="relative flex">
             <Image

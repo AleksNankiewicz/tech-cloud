@@ -31,24 +31,6 @@ const columns = [
     width: 150,
     editable: true,
   },
-  {
-    field: 'password',
-    headerName: 'Password',
-    width: 150,
-    renderCell: (params) => {
-      const [revealed, setRevealed] = useState(false)
-
-      const handleClick = () => {
-        setRevealed((prev) => !prev)
-      }
-
-      return (
-        <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          {revealed ? params.value : '*'.repeat(params.value.length)}
-        </div>
-      )
-    },
-  },
 
   {
     field: 'createdAt',
