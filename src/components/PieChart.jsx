@@ -38,7 +38,10 @@ const PieRechart = ({ users, works }) => {
       </ResponsiveContainer>
       <div className=" flex justify-center flex-wrap gap-5 w-[90%] mx-auto my-auto md:-mt-6 ">
         {data.map((item, index) => (
-          <div className="flex flex-col justify-center items-center">
+          <div
+            key={index}
+            className="flex flex-col justify-center items-center"
+          >
             <div className={` border-b border-[${colors[index]}] `}>
               {item.name}
             </div>

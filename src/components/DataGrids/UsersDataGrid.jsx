@@ -2,13 +2,6 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import { DataGrid } from '@mui/x-data-grid'
-import { useState } from 'react'
-
-// export async function getServerData() {
-//   const rows = await getUsers()
-//   console.log(rows)
-//   return rows
-// }
 
 const columns = [
   { field: '_id', headerName: 'ID', width: 90 },

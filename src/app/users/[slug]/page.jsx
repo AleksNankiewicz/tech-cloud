@@ -30,6 +30,7 @@ const SingleUser = async ({ params }) => {
           <div className="flex  flex-col">
             <div className="relative">
               <Image
+                alt="avatar"
                 src={user?.img ? user.img : '/noavatar.png'}
                 width={75}
                 height={75}
@@ -75,7 +76,7 @@ const SingleUser = async ({ params }) => {
                 <Image
                   src={work?.img?.length ? work?.img[0] : '/Znak-Mistrz.png'}
                   fill
-                  alt="Znak-Mistrz"
+                  alt="photo"
                   priority
                   className=" object-cover object-center group-hover:scale-150 duration-1000"
                 />

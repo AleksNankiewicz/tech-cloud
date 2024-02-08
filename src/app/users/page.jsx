@@ -40,6 +40,7 @@ const UsersPage = async () => {
               <div className="flex  flex-col">
                 <div className="relative">
                   <Image
+                    alt="avatar"
                     src={user?.img ? user.img : '/noavatar.png'}
                     width={75}
                     height={75}
@@ -53,7 +54,9 @@ const UsersPage = async () => {
 
                 <div className="flex gap-2 pb-1">
                   {user.tags.map((tag) => (
-                    <Badge variant="outline">{tag}</Badge>
+                    <Badge key={tag} variant="outline">
+                      {tag}
+                    </Badge>
                   ))}
                 </div>
                 <p>{user.desc}</p>

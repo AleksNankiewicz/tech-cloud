@@ -93,7 +93,9 @@ const Home = async () => {
               </div>
               <div className="flex gap-2 pb-1">
                 {work.tags.map((tag) => (
-                  <Badge variant="outline">{tag}</Badge>
+                  <Badge key={tag} variant="outline">
+                    {tag}
+                  </Badge>
                 ))}
               </div>
               <div className="relative w-full h-[80%] overflow-hidden rounded-2xl ">
