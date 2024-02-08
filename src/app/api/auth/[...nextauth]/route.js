@@ -46,32 +46,32 @@ const handler = NextAuth({
       },
     }),
   ],
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id
-        token.isAdmin = user.isAdmin
-        token.fullName = user.fullName
-        token.username = user.username
-        token.img = user.img
-      }
-      return token
-    },
-    async session({ session, token }) {
-      if (token) {
-        session.user.id = token.id
-        session.user.isAdmin = token.isAdmin
-        session.user.fullName = token.fullName
-        session.user.username = token.username
-        session.user.img = token.img
-      }
-      return session
-    },
-    authorized({ auth, request }) {
-      console.log(auth)
-      return true
-    },
-  },
+  // callbacks: {
+  //   async jwt({ token, user }) {
+  //     if (user) {
+  //       token.id = user.id
+  //       token.isAdmin = user.isAdmin
+  //       token.fullName = user.fullName
+  //       token.username = user.username
+  //       token.img = user.img
+  //     }
+  //     return token
+  //   },
+  //   async session({ session, token }) {
+  //     if (token) {
+  //       session.user.id = token.id
+  //       session.user.isAdmin = token.isAdmin
+  //       session.user.fullName = token.fullName
+  //       session.user.username = token.username
+  //       session.user.img = token.img
+  //     }
+  //     return session
+  //   },
+  //   authorized({ auth, request }) {
+  //     console.log(auth)
+  //     return true
+  //   },
+  // },
 })
 
 export { handler as GET, handler as POST }
