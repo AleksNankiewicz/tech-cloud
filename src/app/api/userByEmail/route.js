@@ -1,3 +1,3 @@
-export async function GET(request) {
-  console.log(request)
-}
+// export async function GET(request) {
+//   console.log(request)
+// }
