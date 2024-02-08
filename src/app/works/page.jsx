@@ -37,7 +37,7 @@ const WorksPage = async () => {
                   <IoIosArrowRoundForward size={20} color="black" />
                 </div>
               </div>
-              <div className="flex gap-2 pb-1">
+              <div className="flex gap-2 pb-1 flex-wrap">
                 {work.tags.map((tab) => (
                   <Badge key={tab} variant="outline">
                     {tab}

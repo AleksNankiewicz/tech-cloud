@@ -52,7 +52,7 @@ const UsersPage = async () => {
 
                 <h2 className="text-muted-foreground"> {user.fullName}</h2>
 
-                <div className="flex gap-2 pb-1">
+                <div className="flex gap-2 pb-1 flex-wrap">
                   {user.tags.map((tag) => (
                     <Badge key={tag} variant="outline">
                       {tag}
