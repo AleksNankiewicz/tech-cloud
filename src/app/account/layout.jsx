@@ -49,7 +49,7 @@ const AdminPageLayout = ({ children }) => {
     if (status === 'unauthenticated') {
       router.push('/')
     }
-  }, [session, status])
+  }, [router, session, status])
 
   const handleSignOut = async () => {
     router.push('/')
