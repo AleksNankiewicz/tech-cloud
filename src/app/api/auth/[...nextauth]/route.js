@@ -14,27 +14,33 @@ const handler = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials, req) {
-        // Add logic here to look up the user from the credentials supplied
+        const { username, password } = credentials
 
-        const username = credentials?.username
-        const password = credentials?.password
+        try {
+          connectToDb()
+          const user = await User.findOne({ username })
 
-        connectToDb()
-        const user = await User.findOne({ username })
+          if (!user) {
+            // User not found
+            return null
+          }
 
-        // const isPasswordCorrect = await User.findOne({ password })
-        // console.log(isPasswordCorrect)
+          const isPasswordCorrect = await bcrypt.compare(
+            password,
+            user.password
+          )
 
-        const isPasswordCorrect = await bcrypt.compare(password, user.password)
-
-        if (user && isPasswordCorrect) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user
-        } else {
-          // If you return null then an error will be displayed advising the user to check their details.
+          if (isPasswordCorrect) {
+            // Passwords match, return the user object
+            return user
+          } else {
+            // Passwords don't match, return null
+            return null
+          }
+        } catch (error) {
+          // Handle any errors that occur during the authorization process
+          console.error('Authorization error:', error)
           return null
-
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
         }
       },
     }),
