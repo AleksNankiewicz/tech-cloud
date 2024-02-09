@@ -9,17 +9,17 @@ import Image from 'next/image'
 import { getWorks } from '@/lib/data'
 import Link from 'next/link'
 
-const getData = async () => {
-  const res = await fetch(`${process.env.BASE_URL}/api/works`, {
-    next: { revalidate: 3600 },
-  })
+// const getData = async () => {
+//   const res = await fetch(`${process.env.BASE_URL}/api/works`, {
+//     revalidate: 30,
+//   })
 
-  if (!res.ok) {
-    throw new Error('Something went wrong in get data in works page!')
-  }
+//   if (!res.ok) {
+//     throw new Error('Something went wrong in get data in works page!')
+//   }
 
-  return res.json()
-}
+//   return res.json()
+// }
 
 const WorksPage = async () => {
   const works = await getWorks()
