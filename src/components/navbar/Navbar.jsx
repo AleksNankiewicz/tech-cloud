@@ -43,30 +43,6 @@ const Navbar = () => {
     await signIn('credentials', { username, password })
   }
 
-  const getData = async () => {
-    try {
-      const res = await fetch(`${process.env.BASE_URL}/api/userByEmail`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ session }),
-      })
-
-      if (res.ok) {
-        console.log(res)
-      }
-    } catch (err) {
-      console.log(err)
-      throw new Error('Something went wrong in navbar')
-    }
-  }
-
-  //  if (session) {
-  //   console.log('joi')
-  //   getData()
-  // }
-
   return (
     <div className="max-w-screen-2xl flex justify-between items-center p-4 mx-auto pb-0">
       <Link href="/" className="text-xl md:text-4xl">
@@ -78,6 +54,14 @@ const Navbar = () => {
         <Link href="/users" className="">
           Programiści
         </Link>
+
+        {session?.data?.user?.isAdmin && (
+          <Link href={'/admin'}>
+            <Button className="bg-slate-950 border-white text-white border hover:text-slate-950">
+              Admin
+            </Button>
+          </Link>
+        )}
 
         {session?.data?.user ? (
           <Link href={'/account'}>

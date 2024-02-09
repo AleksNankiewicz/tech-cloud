@@ -38,8 +38,7 @@ const AdminPageLayout = ({ children }) => {
   const [img, setImg] = useState('')
   const { data: session, status } = useSession()
   useEffect(() => {
-    console.log(status)
-    if (status === 'unauthenticated' || session.user.isAdmin == false)
+    if (status === 'unauthenticated' || session?.user?.isAdmin == false)
       router.push('/')
     if (status === 'authenticated') {
       setFullName(session.user.fullName)

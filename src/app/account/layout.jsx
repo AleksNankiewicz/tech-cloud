@@ -15,24 +15,12 @@ import { useRouter } from 'next/navigation'
 
 const links = [
   {
-    path: '/account/showProfile',
-    label: 'Profil',
-  },
-  {
-    path: '/account/showPosts',
-    label: 'Prace',
-  },
-  {
     path: '/account/addPost',
     label: 'Dodaj post',
   },
   {
     path: '/account/editProfile',
     label: 'Edytuj profil',
-  },
-  {
-    path: '/account',
-    label: 'Statysktyki',
   },
 ]
 
@@ -43,7 +31,7 @@ const AdminPageLayout = ({ children }) => {
   const { data: session, status } = useSession()
   useEffect(() => {
     if (status === 'authenticated') {
-      setFullName(session.user.fullName)
+      setFullName(session.user.username)
       setImg(session.user.img)
     }
     if (status === 'unauthenticated') {

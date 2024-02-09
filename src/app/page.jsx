@@ -53,28 +53,28 @@ const Home = async () => {
         ></Image>
       </div>
 
-      <div className=" min-h-[300px]  bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
+      <div className=" md:min-h-[300px]  bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
         <h1 className="text-xl  md:text-2xl">Ekspercka Kadra Nauczycielska:</h1>{' '}
         <p className="text-muted-foreground text-xs md:text-base">
           Nasi doświadczeni nauczyciele nie tylko posiadają ogromną wiedzę, ale
           również pasję do dzielenia się nią z uczniami.
         </p>
       </div>
-      <div className=" min-h-[300px]  bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
+      <div className=" md:min-h-[300px]  bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
         <h1 className="text-xl  md:text-2xl">Projekty Praktyczne:</h1>{' '}
         <p className="text-muted-foreground text-xs md:text-base">
           Nie uczymy tylko teorii. Każdy moduł obejmuje praktyczne projekty,
           które pozwalają Ci zastosować zdobytą wiedzę w realnych sytuacjach.
         </p>
       </div>
-      <div className=" min-h-[300px]   bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
+      <div className=" md:min-h-[300px]   bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
         <h1 className="text-xl  md:text-2xl">Wsparcie Społeczności:</h1>{' '}
         <p className="text-muted-foreground text-xs md:text-base">
           Dołączając do nas, dołączasz do społeczności pasjonatów programowania.
           Razem uczymy się, dzielimy pomysły i inspirujemy się nawzajem.
         </p>
       </div>
-      <div className=" min-h-[300px]  bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
+      <div className=" md:min-h-[300px]  bg-slate-900 rounded-2xl p-4 flex flex-col justify-evenly md:col-span-1 col-span-2 ">
         <h1 className="text-2xl  md:text-2xl">Masz pytania?</h1>{' '}
         <p className="text-muted-foreground">Napisz do nas</p>
         <Button className="md:w-2/3 rounded-full ">zdz@gmail.com</Button>
@@ -182,13 +182,13 @@ const Home = async () => {
           </div>
         </div>
       </div>
-      <div className=" md:h-[250px] h-[340px] flex flex-col justify-between  bg-slate-900 col-span-2 rounded-2xl p-4">
-        <h1 className="text-xl">Gotów na swoją przygodę z programowaniem?</h1>
-        <p className="text-muted-foreground">
-          Wyślij sowje zgłoszenie już dziś!
-        </p>
-        <Button className="md:w-3/4 rounded-full">zdz@gmail.com</Button>
-        <div className="flex md:gap-4 gap-2">
+      <div className=" md:h-[250px]  flex flex-col justify-between  bg-slate-900 col-span-2 rounded-2xl p-4 text-center md:text-left">
+        <h1 className="md:text-2xl">
+          Gotów na swoją przygodę z programowaniem?
+        </h1>
+        <p className="text-muted-foreground">Wyślij zgłoszenie już dziś!</p>
+        <Button className="md:w-3/4 rounded-full ">zdz@gmail.com</Button>
+        <div className="md:flex md:gap-4 gap-2 hidden">
           <div className=" bg-white p-1 rounded-full">
             <AiFillInstagram size={25} color="black" />
           </div>
@@ -200,7 +200,7 @@ const Home = async () => {
           </div>
         </div>
       </div>
-      <div className=" md:h-[250px] h-[340px] flex flex-col   bg-slate-900 col-span-2 rounded-2xl p-4">
+      <div className=" md:h-[250px] flex flex-col   bg-slate-900 col-span-2 rounded-2xl p-4">
         <h1 className="text-xl">Chcesz zobaczyć więcej prac?</h1>
         <div className="flex flex-col">
           <Link href="/works/Znak-Mistrz">

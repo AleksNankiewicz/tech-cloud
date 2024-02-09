@@ -8,7 +8,6 @@ const PieRechart = ({ users, works }) => {
   const data = [
     { name: 'Użytkownicy', value: users },
     { name: 'Posty', value: works },
-    { name: 'Wyświetlenia', value: 50 },
   ]
   return (
     <div
