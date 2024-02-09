@@ -28,6 +28,7 @@ export const getWorks = async () => {
 export const getWork = async (slug) => {
   try {
     connectToDb()
+
     const work = await Work.findOne({ slug })
     return work
   } catch (err) {

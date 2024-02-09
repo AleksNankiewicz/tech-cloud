@@ -17,7 +17,7 @@ export const connectToDb = async () => {
 
     const db = await mongoose.connect(process.env.MONGO)
 
-    connection.isConnected = db.connection[0].readyState
+    connection.isConnected = db.readyState === 1
   } catch (err) {
     console.log(err)
     throw new Error(err)
