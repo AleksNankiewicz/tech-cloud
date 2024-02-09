@@ -14,9 +14,13 @@ import Link from 'next/link'
 const SingleUser = async ({ params }) => {
   const { slug } = params
 
+  console.log('działa')
+
   const user = await getUserByUsername(slug)
 
-  const works = await getUserWorks(user.id)
+  // const works = await getUserWorks(user.id)
+
+  console.log('działa 2')
 
   return (
     <div className="grid grid-cols-2 gap-4 w-full  ">
