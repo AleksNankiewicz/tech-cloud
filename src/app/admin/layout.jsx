@@ -18,10 +18,7 @@ const links = [
     path: '/admin/showPosts',
     label: 'Prace',
   },
-  {
-    path: '/admin/addUser',
-    label: 'Dodaj użytkownika',
-  },
+
   {
     path: '/admin/removeUser',
     label: 'Usuń użytkownika',
@@ -45,6 +42,11 @@ const AdminPageLayout = ({ children }) => {
       setImg(session.user.img)
     }
   }, [router, session, status])
+
+  const handleSignOut = async () => {
+    router.push('/')
+    await signOut()
+  }
 
   const settings = {
     dots: true,
@@ -97,6 +99,14 @@ const AdminPageLayout = ({ children }) => {
               </Link>
             </div>
           ))}
+          <div className="w-full">
+            <button
+              onClick={handleSignOut}
+              className="p-3 bg-white text-slate-950  border-3 border-slate-950 w-full flex justify-center items-center rounded-md text-center "
+            >
+              Wyloguj się
+            </button>
+          </div>
         </div>
         <div className="md:col-span-4 col-span-5 rounded-2xl bg-slate-900 p-4 min-h-screen">
           {children}

@@ -25,11 +25,30 @@ import { editProfilePage, editUser } from '@/lib/data'
 import { useFormState } from 'react-dom'
 import { useSession } from 'next-auth/react'
 import { useState, useEffect } from 'react'
+import { useToast } from '../ui/use-toast'
 const EditProfileForm = () => {
+  const { toast } = useToast()
+
   const [state, formAction] = useFormState(editUser, undefined)
 
   const [id, setId] = useState('')
   const { data: session, status } = useSession()
+
+  useEffect(() => {
+    // Show toast when state.success or state.error changes
+    if (state?.succes) {
+      toast({
+        description: state.succes,
+      })
+    }
+    if (state?.error) {
+      toast({
+        variant: 'destructive',
+        description: state.error,
+      })
+    }
+  }, [state?.succes, state?.error])
+
   useEffect(() => {
     if (status === 'authenticated') {
       setId(session.user.id)
@@ -37,7 +56,7 @@ const EditProfileForm = () => {
   }, [session, status])
 
   return (
-    <Card className="w-full">
+    <Card className="w-full bg-slate-950 text-white">
       <CardHeader>
         <CardTitle>Edytuj profil</CardTitle>
         <CardDescription>Tu możesz zmienić swoje dane</CardDescription>
@@ -49,115 +68,86 @@ const EditProfileForm = () => {
               <Label htmlFor="name">Identyfikator użytkownika</Label>
               <Input
                 id="name"
-                placeholder="..."
                 name="userId"
-                className="text-gray-700 bg-slate-500"
+                className="text-muted-foreground"
                 value={id}
                 readOnly
               />
               <Label htmlFor="name">Imię i Nazwisko</Label>
-              <Input
-                id="name"
-                placeholder="Imię i Nazwisko..."
-                name="fullName"
-                className="text-white"
-              />
+              <Input id="name" name="fullName" className="text-white" />
               <Label htmlFor="name">Hasło</Label>
-              <Input
-                id="name"
-                placeholder="hasło..."
-                name="password"
-                className="text-white"
-              />
+              <Input id="pass" name="password" className="text-white" />
               <Label htmlFor="name">Opis</Label>
-              <Input
-                id="name"
-                placeholder="opis..."
-                name="desc"
-                className="text-white"
-              />
+              <Input id="desc" name="desc" className="text-white" />
 
               <Label htmlFor="name">Tagi</Label>
               <div className=" flex gap-2 flex-wrap">
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag1"
                   name="tag1"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag2"
                   name="tag2"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag3"
                   name="tag3"
                   className="text-white  rounded-2xl w-20"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag4"
                   name="tag4"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag5"
                   name="tag5"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag6"
                   name="tag6"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag7"
                   name="tag7"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
                   id="tag8"
-                  placeholder="tag.."
                   name="tag8"
                   className="text-white  rounded-2xl w-20"
                 />
                 <Input
                   id="tag9"
-                  placeholder="tag.."
                   name="tag9"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
                   id="tag10"
-                  placeholder="tag.."
                   name="tag10"
                   className="text-white w-20 rounded-2xl"
                 />
               </div>
-              <Label htmlFor="name">Zdjęcie</Label>
+              <Label htmlFor="image">Zdjęcie</Label>
               <Input
-                id="name"
+                id="image"
                 placeholder=""
                 name="img"
                 type="file"
-                className="text-white w-1/2"
+                className="text-white w-full md:w-1/2"
               />
             </div>
           </div>
           <Button type="submit" className="border border-black mt-4">
             Edytuj
           </Button>
-          {state?.error}
-          {state?.succes}
         </form>
       </CardContent>
-      <CardFooter className="flex justify-between"></CardFooter>
     </Card>
   )
 }

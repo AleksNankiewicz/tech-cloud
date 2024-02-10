@@ -16,11 +16,6 @@ import { unstable_noStore as noStore } from 'next/cache'
 
 import bcrypt from 'bcrypt'
 
-const CACHE_DURATION = 60 * 60 * 1000 // Cache duration in milliseconds (1 hour)
-
-let cachedWorks = null
-let cacheExpiration = null
-
 export const getWorks = async () => {
   noStore()
   try {

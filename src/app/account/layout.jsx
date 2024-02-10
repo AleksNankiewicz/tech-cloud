@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react'
 import { signOut, useSession } from 'next-auth/react'
 import { redirect } from 'next/dist/server/api-utils'
 import { useRouter } from 'next/navigation'
+import { Toaster } from '@/components/ui/toaster'
 
 const links = [
   {
@@ -83,9 +84,7 @@ const AdminPageLayout = ({ children }) => {
                 alt="avatar"
               ></Image>
             </div>
-            <div className="">
-              {fullName ? fullName : 'Ustaw nazwę w "Edytuj profil"'}
-            </div>
+            <div className="">{fullName && fullName}</div>
           </div>
 
           {links.map((link) => (
@@ -109,6 +108,7 @@ const AdminPageLayout = ({ children }) => {
         </div>
         <div className="md:col-span-4 col-span-5 rounded-2xl bg-slate-900 p-4 min-h-screen">
           {children}
+          <Toaster />
         </div>
       </div>
     </>

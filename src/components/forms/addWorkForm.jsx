@@ -18,18 +18,30 @@ import { addWork } from '@/lib/data'
 import { useFormState } from 'react-dom'
 import { useSession } from 'next-auth/react'
 import { useState, useEffect } from 'react'
+import { useToast } from '../ui/use-toast'
 
 const AddWorkForm = () => {
+  const { toast } = useToast()
+
   const [state, formAction] = useFormState(addWork, undefined)
 
-  const [id, setId] = useState('')
-  const [inputValue, setInputValue] = useState('')
-  const [inputWidth, setInputWidth] = useState('70px')
+  useEffect(() => {
+    // Show toast when state.success or state.error changes
+    if (state?.succes) {
+      toast({
+        description: state.succes,
+      })
+    }
+    if (state?.error) {
+      toast({
+        variant: 'destructive',
+        description: state.error,
+      })
+    }
+  }, [state?.succes, state?.error])
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value)
-    setInputWidth(`${event.target.scrollWidth}px`)
-  }
+  const [id, setId] = useState('')
+
   const { data: session, status } = useSession()
   useEffect(() => {
     if (status === 'authenticated') {
@@ -37,22 +49,26 @@ const AddWorkForm = () => {
     }
   }, [session, status])
   return (
-    <Card className="w-full">
+    <Card className="w-full bg-slate-950 text-white">
       <CardHeader>
-        <CardTitle>Dodaj post</CardTitle>
+        <CardTitle className="text-white">Dodaj post</CardTitle>
         <CardDescription>Stwórz nowy post na swój profil</CardDescription>
       </CardHeader>
       <CardContent>
         <form action={formAction}>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Tytuł</Label>
+              <Label htmlFor="name">Indentyfikator użytkownika</Label>
               <Input
-                id="name"
-                placeholder="tytuł..."
-                name="title"
-                className="text-white"
+                id="userId"
+                placeholder="userId.."
+                name="userId"
+                className="text-muted-foreground"
+                value={id}
+                readOnly
               />
+              <Label htmlFor="name">Tytuł</Label>
+              <Input id="name" name="title" className="text-white" />
               <Label htmlFor="name">Opis</Label>
               <Input
                 id="name"
@@ -61,74 +77,55 @@ const AddWorkForm = () => {
                 className="text-white"
               />
 
-              <Label htmlFor="name">Indentyfikator użytkownika</Label>
-              <Input
-                id="userId"
-                placeholder="userId.."
-                name="userId"
-                className="text-white"
-                value={id}
-                readOnly
-              />
               <Label htmlFor="name">Tagi</Label>
               <div className=" flex gap-2 flex-wrap">
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag1"
                   name="tag1"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag2"
                   name="tag2"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag3"
                   name="tag3"
                   className="text-white  rounded-2xl w-20"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag4"
                   name="tag4"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag5"
                   name="tag5"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag6"
                   name="tag6"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
-                  id="tag"
-                  placeholder="tag.."
+                  id="tag7"
                   name="tag7"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
                   id="tag8"
-                  placeholder="tag.."
                   name="tag8"
                   className="text-white  rounded-2xl w-20"
                 />
                 <Input
                   id="tag9"
-                  placeholder="tag.."
                   name="tag9"
                   className="text-white w-20 rounded-2xl"
                 />
                 <Input
                   id="tag10"
-                  placeholder="tag.."
                   name="tag10"
                   className="text-white w-20 rounded-2xl"
                 />
@@ -168,14 +165,11 @@ const AddWorkForm = () => {
               </div>
             </div>
           </div>
-          <Button type="submit" className="border border-black">
+          <Button type="submit" className="border border-black mt-3">
             Dodaj
           </Button>
-          {state?.error}
-          {state?.succes}
         </form>
       </CardContent>
-      <CardFooter className="flex justify-between"></CardFooter>
     </Card>
   )
 }

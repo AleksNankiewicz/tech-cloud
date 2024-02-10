@@ -203,23 +203,14 @@ const Home = async () => {
       <div className=" md:h-[250px] flex flex-col   bg-slate-900 col-span-2 rounded-2xl p-4">
         <h1 className="text-xl">Chcesz zobaczyć więcej prac?</h1>
         <div className="flex flex-col">
-          <Link href="/works/Znak-Mistrz">
-            <div className="flex justify-between border-b py-3">
-              {' '}
-              <p>Znak-Mistrz</p> <IoIosArrowRoundForward size={20} />
-            </div>
-          </Link>
-          <Link href="/works/Transform3D">
-            <div className="flex justify-between border-b py-3">
-              <p>Transform 3D</p> <IoIosArrowRoundForward size={20} />
-            </div>
-          </Link>
-          <Link href="/works/WalentynkaDlaPaniDyrektor">
-            <div className="flex justify-between border-b py-3">
-              {' '}
-              <p>Walentynka</p> <IoIosArrowRoundForward size={20} />
-            </div>
-          </Link>
+          {allWorks.slice(allWorks.length - 3, allWorks.length).map((work) => (
+            <Link key={work?.title} href={`/works/${work?.slug}`}>
+              <div className="flex justify-between border-b py-3">
+                {' '}
+                <p>{work?.title}</p> <IoIosArrowRoundForward size={20} />
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

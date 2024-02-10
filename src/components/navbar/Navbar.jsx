@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
     <div className="max-w-screen-2xl flex justify-between items-center p-4 mx-auto pb-0">
       <Link href="/" className="text-xl md:text-4xl">
-        Tech Cloud
+        {session?.data?.user?.isAdmin ? 'Tc' : 'Tech Cloud'}
       </Link>
 
       <div className="flex gap-4 md:gap-7 items-center">
