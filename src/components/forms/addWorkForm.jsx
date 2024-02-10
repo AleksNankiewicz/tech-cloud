@@ -19,24 +19,31 @@ import { useFormState } from 'react-dom'
 import { useSession } from 'next-auth/react'
 import { useState, useEffect } from 'react'
 import { useToast } from '../ui/use-toast'
+import Spinner from '../Spinner'
 
 const AddWorkForm = () => {
   const { toast } = useToast()
+
+  const [loading, setLoading] = useState(false)
 
   const [state, formAction] = useFormState(addWork, undefined)
 
   useEffect(() => {
     // Show toast when state.success or state.error changes
+    setLoading(false)
     if (state?.succes) {
       toast({
         description: state.succes,
       })
+
+      state.succes = undefined
     }
     if (state?.error) {
       toast({
         variant: 'destructive',
         description: state.error,
       })
+      state.error = undefined
     }
   }, [state?.succes, state?.error])
 
@@ -55,7 +62,7 @@ const AddWorkForm = () => {
         <CardDescription>Stwórz nowy post na swój profil</CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={formAction}>
+        <form action={formAction} onSubmit={() => setLoading(true)}>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="name">Indentyfikator użytkownika</Label>
@@ -63,19 +70,14 @@ const AddWorkForm = () => {
                 id="userId"
                 placeholder="userId.."
                 name="userId"
-                className="text-muted-foreground"
+                className="text-muted-foreground "
                 value={id}
                 readOnly
               />
               <Label htmlFor="name">Tytuł</Label>
               <Input id="name" name="title" className="text-white" />
               <Label htmlFor="name">Opis</Label>
-              <Input
-                id="name"
-                placeholder="opis..."
-                name="desc"
-                className="text-white"
-              />
+              <Input id="name" name="desc" className="text-white" />
 
               <Label htmlFor="name">Tagi</Label>
               <div className=" flex gap-2 flex-wrap">
@@ -165,9 +167,15 @@ const AddWorkForm = () => {
               </div>
             </div>
           </div>
-          <Button type="submit" className="border border-black mt-3">
-            Dodaj
-          </Button>
+          {loading ? (
+            <div className="mt-4">
+              <Spinner />
+            </div>
+          ) : (
+            <Button type="submit" className="border border-black mt-4">
+              Dodaj
+            </Button>
+          )}
         </form>
       </CardContent>
     </Card>

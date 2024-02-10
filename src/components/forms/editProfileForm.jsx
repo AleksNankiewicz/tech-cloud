@@ -26,26 +26,33 @@ import { useFormState } from 'react-dom'
 import { useSession } from 'next-auth/react'
 import { useState, useEffect } from 'react'
 import { useToast } from '../ui/use-toast'
+import Spinner from '../Spinner'
 const EditProfileForm = () => {
   const { toast } = useToast()
 
   const [state, formAction] = useFormState(editUser, undefined)
+
+  const [loading, setLoading] = useState(false)
 
   const [id, setId] = useState('')
   const { data: session, status } = useSession()
 
   useEffect(() => {
     // Show toast when state.success or state.error changes
+
+    setLoading(false)
     if (state?.succes) {
       toast({
         description: state.succes,
       })
+      state.succes = undefined
     }
     if (state?.error) {
       toast({
         variant: 'destructive',
         description: state.error,
       })
+      state.error = undefined
     }
   }, [state?.succes, state?.error])
 
@@ -62,7 +69,7 @@ const EditProfileForm = () => {
         <CardDescription>Tu możesz zmienić swoje dane</CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={formAction}>
+        <form action={formAction} onSubmit={() => setLoading(true)}>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="name">Identyfikator użytkownika</Label>
@@ -143,9 +150,16 @@ const EditProfileForm = () => {
               />
             </div>
           </div>
-          <Button type="submit" className="border border-black mt-4">
-            Edytuj
-          </Button>
+
+          {loading ? (
+            <div className="mt-4">
+              <Spinner />
+            </div>
+          ) : (
+            <Button type="submit" className="border border-black mt-4">
+              Edytuj
+            </Button>
+          )}
         </form>
       </CardContent>
     </Card>

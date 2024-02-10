@@ -320,7 +320,7 @@ export const editUser = async (previousState, formData) => {
         async () => {
           try {
             imgUrl = await getDownloadURL(uploadTask.snapshot.ref)
-            console.log(imgUrl)
+
             resolve(imgUrl)
           } catch (error) {
             reject(error)
@@ -332,7 +332,6 @@ export const editUser = async (previousState, formData) => {
 
   try {
     if (img.name !== 'undefined') {
-      console.log(img)
       await imgUpload()
     }
     connectToDb()
